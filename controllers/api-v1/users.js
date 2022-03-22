@@ -45,11 +45,12 @@ router.post('/register', async (req, res)=>{
 router.post('/login', async (req, res)=>{
     try{
         // try to find the user in the BD that is logged in
+        // console.log(req.body)
         const userCheck = await db.User.findOne({
             email: req.body.email
         })
         // if the user is not found -- reutrn and send back a message that the user needs to sign up
-        if(!userCheck) return  res.status(409).json({msg: "user credentials are incorrect"})
+        if(!userCheck) return  res.status(409).json({msg: "user credentials are incorrectttt"})
         // check if the password from the req.body against the password in the db
         const matchPasswords = await bcrypt.compare(req.body.password, userCheck.password)
         console.log(matchPasswords)
